@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Cancel Booking - The Grand Table{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="form-card p-4 text-center">
+                    <i class="fas fa-exclamation-triangle fa-3x text-warning mb-4"></i>
+                    <h2 class="mb-3">Cancel Booking</h2>
+                    <p class="mb-4">Are you sure you want to cancel this booking?</p>
+                    <div class="booking-details p-3 mb-4 text-start">
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2"><i class="fas fa-user me-2"></i><strong>Name:</strong> {{ booking.name }}</li>
+                            <li class="mb-2"><i class="fas fa-calendar me-2"></i><strong>Date:</strong> {{ booking.date }}</li>
+                            <li class="mb-2"><i class="fas fa-clock me-2"></i><strong>Time:</strong> {{ booking.time }}</li>
+                            <li class="mb-2"><i class="fas fa-users me-2"></i><strong>Guests:</strong> {{ booking.guests }}</li>
+                        </ul>
+                    </div>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="d-flex gap-3 justify-content-center">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash me-2"></i>Yes, Cancel Booking
+                            </button>
+                            <a href="{% url 'booking_list' %}" class="btn btn-outline-secondary">
+                                <i class="fas fa-arrow-left me-2"></i>Go Back
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
